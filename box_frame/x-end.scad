@@ -121,8 +121,7 @@ module x_end_idler(){
         }
         translate([-6 - x_box_width, 11, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube([x_box_width + 1, 12, 9.8 + max(idler_bearing[0], 16)]);
 
-//This is meant to increase the size of the hole that the idler goes into...Needs fixing
-		//translate([-2.25 - x_box_width, 20, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube([11.5, 12, 9.8 + max(idler_bearing[0], 16)]) ;
+//These lines increase the size of the hole that the idler goes into
 	translate([-2.25 - x_box_width, 20, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube_fillet([12, 12, 9.8 + max(idler_bearing[0], 16)], top=[0, 1, 0, 1]);
     }
         %translate([-14 - xy_delta / 2, -9, 30.5 - (max(idler_width, 16) / 2)]) x_tensioner();
