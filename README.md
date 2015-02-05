@@ -1,4 +1,4 @@
-# This is Prusa iteration 3
+# This is Prusa iteration 3 - ANSI Edition
 Published under GPL v3
 
 This Prusa3 fork has two main goals:
