@@ -81,23 +81,23 @@ module x_carriage(){
             }
             // extruder mounts
             translate([20, -2, carriage_hole_to_side]) {
-                rotate([90, 0, 0]) cylinder(r=1.8, h=32, center=true,$fn=small_hole_segments);
-                translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=3.4, h=5, $fn=6, center=true);
+                rotate([90, 0, 0]) cylinder(r=632_diameter / 2, h=32, center=true,$fn=small_hole_segments);
+                translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=5, $fn=6, center=true);
             }
             translate([20, -2, carriage_hole_to_side + 30]) {
-                rotate([90, 0, 0]) cylinder(r=1.8, h=32, center=true,$fn=small_hole_segments);
-                translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=3.4, h=5, $fn=6, center=true);
+                rotate([90, 0, 0]) cylinder(r=632_diameter / 2, h=32, center=true,$fn=small_hole_segments);
+                translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=5, $fn=6, center=true);
             }
             if (carriage_l >= 50 + 2 * carriage_hole_to_side) {
                 translate([20, -2, carriage_hole_to_side + 30 + 20]) {
-                    rotate([90, 0, 0]) cylinder(r=1.8, h=32, center=true,$fn=small_hole_segments);
-                    translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=3.4, h=5, $fn=6, center=true);
+                    rotate([90, 0, 0]) cylinder(r=632_diameter / 2, h=32, center=true,$fn=small_hole_segments);
+                    translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=5, $fn=6, center=true);
                 }
             }
             if (carriage_l >= 80 + 2 * carriage_hole_to_side) {
                 translate([20, -2, carriage_hole_to_side + 30 + 20 + 30]) {
-                    rotate([90, 0, 0]) cylinder(r=1.8, h=32, center=true,$fn=small_hole_segments);
-                    translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=3.4, h=5, $fn=6, center=true);
+                    rotate([90, 0, 0]) cylinder(r=632_diameter / 2, h=32, center=true,$fn=small_hole_segments);
+                    translate([0, 7, 0]) rotate([90, 60, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=5, $fn=6, center=true);
                 }
             }
             //belt insert

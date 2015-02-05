@@ -98,10 +98,10 @@ module x_end_base(vfillet=[3, 3, 3, 3], thru=true, len=40, offset=0){
         }
         translate([0, 0, 5 - bushing_xy[0]]) {  // m5 nut insert
             translate([0, 17, 0]) rotate([0, 0, 10]){
-                //rod
-                translate([0, 0, -1]) cylinder(h=(4.1 / 2 + 5), r=3, $fn=32);
-                //nut
-                translate([0, 0, 9]) cylinder(r=4.6, h=14.1, center = true, $fn=6);
+                //rod - radius calculated by [(z-rod diameter+1)/2]
+                translate([0, 0, -1]) cylinder(h=(4.1 / 2 + 5), r=((z_threaded_rod_diameter + 1) / 2), $fn=32);
+                //nut - radius calculated by nut long diagonal
+                translate([0, 0, 9]) rotate([0, 0, 20]) cylinder(r=(z_threaded_rod_diameter * 1.9) / 2, h=8, center = true, $fn=6);
 
             }
         }
@@ -115,17 +115,21 @@ module x_end_idler(){
         x_end_base(len=48 + z_delta / 3, offset=-10 - z_delta / 3);
         // idler hole
         translate([-20, -15 - z_delta / 2, 30]) {
-            rotate([0, 90, 0]) cylinder(r=m4_diameter / 2, h=33, center=true, $fn=small_hole_segments);
-            translate([15 - 2 * single_wall_width, 0, 0]) rotate([90, 0, 90]) cylinder(r=m4_nut_diameter_horizontal / 2, h=3, $fn=6);
+            rotate([0, 90, 0]) cylinder(r=632_diameter / 2, h=33, center=true, $fn=small_hole_segments);
+            translate([15 - 2 * single_wall_width, 0, 0]) rotate([90, 0, 90]) cylinder(r=632_nut_diameter_horizontal / 2, h=3, $fn=6);
 
         }
-        translate([-6 - x_box_width, 11, 29.5 - (max(idler_width, 16) / 2)]) cube([x_box_width + 1, 12, 1.5 + max(idler_bearing[0], 16)]);
+        translate([-6 - x_box_width, 11, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube([x_box_width + 1, 12, 9.8 + max(idler_bearing[0], 16)]);
+
+//This is meant to increase the size of the hole that the idler goes into...Needs fixing
+		//translate([-2.25 - x_box_width, 20, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube([11.5, 12, 9.8 + max(idler_bearing[0], 16)]) ;
+	translate([-2.25 - x_box_width, 20, x_box_height / 2 - ((max(idler_bearing[0], 16) + 9.8) / 2)]) cube_fillet([12, 12, 9.8 + max(idler_bearing[0], 16)], top=[0, 1, 0, 1]);
     }
         %translate([-14 - xy_delta / 2, -9, 30.5 - (max(idler_width, 16) / 2)]) x_tensioner();
 }
 
 module x_tensioner(len=68, idler_height=max(idler_bearing[0], 16)) {
-    idlermount(len=len, rod=m4_diameter / 2 + 0.5, idler_height=idler_height, narrow_len=47, narrow_width=idler_width + 2 - single_wall_width);
+    idlermount(len=len, rod=632_diameter / 2 + 0.5, idler_height=idler_height, narrow_len=47, narrow_width=idler_width + 2 - single_wall_width);
 }
 
 

@@ -34,11 +34,11 @@ intersection() {
         translate([0, 18, -1]) cylinder(h=20, r=bushing_z[0] + single_wall_width / 4);
 
         //screw
-        translate([0, -20, 10]) rotate([0, -90, 0]) screw(head_drop=7, h=122, r_head=4.5);
+        translate([0, -17, 9]) rotate([0, -90, 0]) screw(head_drop=7, h=122, r_head=4.5);
         //x carriage nut. Too bad its not parametrised (todo)
-        translate([-7,-29, 10]) rotate([90, 0, 0]) {
-            rotate([0, 90, 0]) cylinder(r=3.4, h=5, $fn=6, center=true);
-            rotate([0, 90, 0]) cylinder(r=1.8, h=22, center=true);
+         translate([-7,-27, 9]) rotate([90, 0, 0]) {
+            rotate([0, 90, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=5, $fn=6, center=true);
+            rotate([0, 90, 0]) cylinder(r=632_diameter / 2, h=22, center=true);
 
         }
         //belt

@@ -71,20 +71,20 @@ wadeidler();
  * @id extruder
  * @using 1 idler
  * @using 1 extruder-body
- * @using 1 m3nut
- * @using 1 m3washer
- * @using 1 m3x25
+ * @using 1 440nut
+ * @using 1 440washer
+ * @using 1 440x25
  * @step Take idler and insert nut into small nut-trap inside the hinge.
- * @step While holding the nut in place, preprare M3x25 bolt with washer and screw it into the hinge just enough to hold the nut.
- * @step Now take the extruder body and idler. Place idler on the hinge counterpart and compleately screw the M3x25 bolt. This will create secured hinge.
+ * @step While holding the nut in place, preprare 440x25 bolt with washer and screw it into the hinge just enough to hold the nut.
+ * @step Now take the extruder body and idler. Place idler on the hinge counterpart and compleately screw the 440x25 bolt. This will create secured hinge.
  * 
- * @using 2 m4nut
- * @step Place M4 nuts into their nut traps, secure them with piece of tape. We need them in place, since later they would be harder to access.
+ * @using 2 632nut
+ * @step Place 632 nuts into their nut traps, secure them with piece of tape. We need them in place, since later they would be harder to access.
  * 
- * @using 3 m3x10
- * @using 3 m3washer
+ * @using 3 440x10
+ * @using 3 440washer
  * @using 1 NEMA17
- * @step Prepare your NEMA17 stepper motor and three M3x10 screws with washers.
+ * @step Prepare your NEMA17 stepper motor and three 440x10 screws with washers.
  * @step Hold motor on place and lightly tighten the screws. We need to adjust motor position later, no need to tighten it hard.
  * 
  * @using 1 large-gear
@@ -97,11 +97,11 @@ wadeidler();
  * @step After adjusting, we need to fix the bolt in. So we place washer at the end of hobbed bolt and with two M8 nuts we will do locknut by tightening them against each other.
  * @step Check if large gear turns freely.
  * 
- * @using 2 m3x40
- * @using 4 m3washer
+ * @using 2 440x40
+ * @using 4 440washer
  * @using 2 extruder-spring
- * @step Prepare two M3x40 screws with sandwitch of washer-spring-washer.
- * @step Insert two M3 nuts into nut traps on top of drive mechanism. [[extruder/top-nut-traps.png]]
+ * @step Prepare two 440x40 screws with sandwitch of washer-spring-washer.
+ * @step Insert two 440 nuts into nut traps on top of drive mechanism. [[extruder/top-nut-traps.png]]
  * @step Insert prepared screws into the holes on idler. Close the idler and tighten the screws into the trapped nuts. More you tighten those screws, more pressure will be on fillament.
  * @step Your extruder is done. [[extruder/assembled.jpg]]
  */
@@ -172,7 +172,7 @@ hole_for_608=22.3;
 block_top_right=[wade_block_width,wade_block_height];
 
 layer_thickness=layer_height;
-filament_diameter=3;
+filament_diameter=1.75;
 filament_feed_hole_d=(filament_diameter*1.1)/cos(180/8);
 hobbing_depth=2;
 echo ("filament_feed_hole_d", filament_feed_hole_d);
@@ -199,7 +199,7 @@ filament_pinch=[
 	large_wheel_translation[1],
 	wade_block_depth/2];
 idler_axis=filament_pinch-[608_diameter/2,0,0];
-idler_fulcrum_offset=608_diameter/2+3.5+m3_diameter/2;
+idler_fulcrum_offset=608_diameter/2+3.5+440_diameter/2;
 idler_fulcrum=idler_axis-[0,idler_fulcrum_offset,0];
 idler_corners_radius=4; 
 idler_height=12;
@@ -208,10 +208,10 @@ idler_608_height=9;
 idler_mounting_hole_across=8;
 idler_mounting_hole_up=15;
 idler_short_side=wade_block_depth-2;
-idler_hinge_r=m3_diameter/2+3.5;
+idler_hinge_r=440_diameter/2+3.5;
 idler_hinge_width=6.5;
 idler_end_length=(idler_height-2)+5;
-idler_mounting_hole_diameter=m4_diameter+0.25;
+idler_mounting_hole_diameter=632_diameter+0.25;
 idler_mounting_hole_elongation=1;
 idler_long_top=idler_mounting_hole_up+idler_mounting_hole_diameter/2+idler_mounting_hole_elongation+2.5;
 idler_long_bottom=idler_fulcrum_offset;
@@ -372,22 +372,22 @@ echo("bhmh", mounting_holes)
 	//carriage mountig holes
 	#translate([-24.5+64+4,-0.5,3]) {
 		translate([-50,0,0]) {
-			translate([0,0,(wade_block_depth+base_extra_depth)/2+4+layer_thickness]) cylinder(r=m3_diameter/2, h=wade_block_depth+base_extra_depth, center=true);
-			translate([0, 0, 1]) cylinder(r=m3_washer_diameter/2, h=10.1, center=true);
+			translate([0,0,(wade_block_depth+base_extra_depth)/2+4+layer_thickness]) cylinder(r=440_diameter/2, h=wade_block_depth+base_extra_depth, center=true);
+			translate([0, 0, 1]) cylinder(r=440_washer_diameter/2, h=10.1, center=true);
 		}
 		
 		translate([0,0,0]) {
-			translate([0,0,(wade_block_depth+base_extra_depth)/2+4+layer_thickness]) cylinder(r=m3_diameter/2, h=wade_block_depth+0.2+base_extra_depth, center=true);
-			translate([0, 0, 2]) cylinder(r=m3_washer_diameter/2, h=10.1, center=true);
+			translate([0,0,(wade_block_depth+base_extra_depth)/2+4+layer_thickness]) cylinder(r=440_diameter/2, h=wade_block_depth+0.2+base_extra_depth, center=true);
+			translate([0, 0, 2]) cylinder(r=440_washer_diameter/2, h=10.1, center=true);
 		}
 	}
 
 	// Idler fulcrum hole.
 	translate(idler_fulcrum+[0,0,0.4])
-	cylinder(r=m3_diameter/2,h=idler_short_side-2*idler_hinge_width-0.5,center=true,$fn=16);
+	cylinder(r=440_diameter/2,h=idler_short_side-2*idler_hinge_width-0.5,center=true,$fn=16);
 
 	translate(idler_fulcrum+[0,0,idler_short_side/2-idler_hinge_width-1])
-	cylinder(r=m3_nut_diameter/2+0.25,h=1,$fn=40);
+	cylinder(r=440_nut_diameter/2+0.25,h=1,$fn=40);
 
 	//Rounded cutout for idler hinge.
 	render()
@@ -450,15 +450,15 @@ echo("bhmh", mounting_holes)
 					-large_wheel_translation[1]-1-base_thickness/2,wade_block_depth/2])
 				rotate([-90,0,0])
 				rotate(360/16)
-				cylinder(r=m4_diameter/2,h=base_thickness+2,$fn=8);	
+				cylinder(r=632_diameter/2,h=base_thickness+2,$fn=8);	
 	
 				translate([-filament_feed_hole_offset+25*((mount<1)?1:-1),
 					-large_wheel_translation[1],
 					wade_block_depth/2])
 				rotate([-90,0,0])
 			//fixme: (correct height
-				//cylinder(r=m4_nut_diameter/2,h=base_thickness,$fn=6);	
-				cylinder(r=m4_nut_diameter/2,h=29.3,$fn=6);
+				//cylinder(r=632_nut_diameter/2,h=base_thickness,$fn=6);	
+				cylinder(r=632_nut_diameter/2,h=29.3,$fn=6);
 			}
 
 	}
@@ -473,13 +473,13 @@ echo("bhmh", mounting_holes)
 		{
 			rotate([0,0,180/8])
 			translate([0,0,-1])
-			cylinder(r=m4_diameter/2,h=wade_block_depth+6,$fn=8);	
+			cylinder(r=632_diameter/2,h=wade_block_depth+6,$fn=8);	
 			rotate([0,0,180/6])
 			translate([0,0,wade_block_width-idler_nut_trap_depth])
-			cylinder(r=m4_nut_diameter/2,h=idler_nut_thickness,$fn=6);	
+			cylinder(r=632_nut_diameter/2,h=idler_nut_thickness,$fn=6);	
 
 			translate([0,10/2,wade_block_width-idler_nut_trap_depth+idler_nut_thickness/2])
-			cube([m4_nut_diameter*cos(30),10,idler_nut_thickness],center=true);
+			cube([632_nut_diameter*cos(30),10,idler_nut_thickness],center=true);
 		}
 	}
 }
@@ -615,12 +615,12 @@ module wadeidler()
 		//Fulcrum hole.
 		translate(idler_fulcrum)
 		rotate(180/8)
-		cylinder(h=idler_short_side+2,r=m3_diameter/2-0.1,center=true,$fn=8);
+		cylinder(h=idler_short_side+2,r=440_diameter/2-0.1,center=true,$fn=8);
 
 		//Nut trap for fulcrum screw.
 		translate(idler_fulcrum+[0,0,idler_short_side/2-idler_hinge_width-1])
 		rotate(360/16)
-		cylinder(h=3,r=m3_nut_diameter_horizontal/2,$fn=6);
+		cylinder(h=3,r=440_nut_diameter_horizontal/2,$fn=6);
 
 		for(idler_screw_hole=[-1,1])
 		translate(idler_axis+[2-idler_height,0,0])
@@ -737,7 +737,7 @@ module peek_reprapsource_holes ()
 	// Mounting holes to affix the extruder into the recess.
 	translate([0,0,min(extruder_recess_h/2, base_thickness/2)])
 	rotate([-90,0,0])
-	cylinder(r=m4_diameter/2-0.5/* tight */,h=wade_block_depth+2,center=true); 
+	cylinder(r=632_diameter/2-0.5/* tight */,h=wade_block_depth+2,center=true); 
 }
 
 //arcol_mount_holes();
@@ -750,14 +750,14 @@ module arcol_mount_holes()
 	translate([hole_separation/2*mount,-7,0]) 
 	{
 		translate([0,0,-1])
-		cylinder(r=m4_diameter/2,h=base_thickness+2,$fn=8);
+		cylinder(r=632_diameter/2,h=base_thickness+2,$fn=8);
 		
 		translate([0,0,base_thickness/2])
 		//rotate(hole_axis_rotation)
 		{
-			cylinder(r=m4_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
-			translate([0,-m4_nut_diameter,hole_slot_height/2+base_thickness/2]) 
-			cube([m4_nut_diameter,m4_nut_diameter*2,hole_slot_height],
+			cylinder(r=632_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
+			translate([0,-632_nut_diameter,hole_slot_height/2+base_thickness/2]) 
+			cube([632_nut_diameter,632_nut_diameter*2,hole_slot_height],
 			center=true);
 		}
 	}
@@ -781,15 +781,15 @@ module mendel_parts_v6_holes (insulator_d=12.7)
 	translate([hole_separation/2,0,0])
 	{
 		translate([0,0,-1])
-		cylinder(r=m4_diameter/2,h=base_thickness+2,$fn=8);
+		cylinder(r=632_diameter/2,h=base_thickness+2,$fn=8);
 
 		translate([0,0,base_thickness/2])
 		rotate(-hole_axis_rotation+180)
 		{
 //			rotate(30)
-			cylinder(r=m4_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
-			translate([0,-m4_nut_diameter,hole_slot_height/2+base_thickness/2]) 
-			cube([m4_nut_diameter,m4_nut_diameter*2,hole_slot_height],
+			cylinder(r=632_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
+			translate([0,-632_nut_diameter,hole_slot_height/2+base_thickness/2]) 
+			cube([632_nut_diameter,632_nut_diameter*2,hole_slot_height],
 					center=true);
 		}
 	}
@@ -839,12 +839,12 @@ module geeksbase_holes ()
 	// Mounting holes to affix the extruder into the recess.
 	translate([5,0,min(extruder_recess_h/2, base_thickness/2-2)])
 	rotate([-90,0,0])
-	cylinder(r=m3_diameter/2-0.5,/*tight*/,h=wade_block_depth+2,center=true); 
+	cylinder(r=440_diameter/2-0.5,/*tight*/,h=wade_block_depth+2,center=true); 
 	translate([-5,0,min(extruder_recess_h/2, base_thickness/2-2)])
 	rotate([-90,0,0])
-	cylinder(r=m3_diameter/2-0.5,/*tight*/,h=wade_block_depth+2,center=true); 
+	cylinder(r=440_diameter/2-0.5,/*tight*/,h=wade_block_depth+2,center=true); 
 
-	//cylinder(r=m4_diameter/2-0.5/* tight */,h=wade_block_depth+2,center=true); 
+	//cylinder(r=632_diameter/2-0.5/* tight */,h=wade_block_depth+2,center=true); 
 }
 
 module malcolm_extrusion_holes () 
@@ -864,14 +864,14 @@ module malcolm_extrusion_holes ()
 	translate([hole_separation/2,0,0])
 	{
 		translate([0,0,-1])
-		cylinder(r=m3_diameter/2,h=base_thickness+2,$fn=8);
+		cylinder(r=440_diameter/2,h=base_thickness+2,$fn=8);
 
 		translate([0,0,base_thickness-2])
 		rotate(-hole_axis_rotation+180)
 		{
-			cylinder(r=m3_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
-			translate([0,-m3_nut_diameter,hole_slot_height/2+base_thickness/2]) 
-			cube([m3_nut_diameter,m3_nut_diameter*2,hole_slot_height],
+			cylinder(r=440_nut_diameter/2,h=base_thickness/2+hole_slot_height,$fn=6);
+			translate([0,-440_nut_diameter,hole_slot_height/2+base_thickness/2]) 
+			cube([440_nut_diameter,440_nut_diameter*2,hole_slot_height],
 					center=true);
 		}
 	}

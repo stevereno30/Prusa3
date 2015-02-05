@@ -77,13 +77,14 @@ module idlermount(len=45, narrow_len=0, narrow_width=0, rod=threaded_rod_diamete
         translate([-12, -8, idler_height / 2]) rotate([90, 0, 90]) oval(r=rod + 0.01, l=12, h=25);
         translate([0, -13 - single_wall_width*2, idler_height / 2]) {
             // nut for tensioning screw
-            translate([0,0,0]) rotate([90, 0, 0]) cylinder(r=m4_nut_diameter_horizontal / 2, h=3.8, $fn=6);
+            translate([0,0,0]) rotate([90, 0, 0]) cylinder(r=632_nut_diameter_horizontal / 2, h=3.8, $fn=6);
+
             // nut insert
-            translate([-2, -3.8, -m4_diameter * 1.5 / 2]) cube([20, 3.8, m4_diameter * 1.5+0.3]);
+            translate([-2, -3.8, - 632_nut_diameter / 2 ]) cube([20, 3.8, 632_nut_diameter ]);
         }
 
         // tensioning screw goes here
-        translate([0, -19, idler_height / 2]) rotate([90, 90, 0]) cylinder(r=m4_diameter / 2, h=15, $fn=small_hole_segments, center=true);
+        translate([0, -19, idler_height / 2]) rotate([90, 90, 0]) cylinder(r=632_diameter / 2, h=15, $fn=small_hole_segments, center=true);
         // bearing goes there
         translate([0, len + idler_bearing[2] - 35, idler_height / 2]) {
             rotate([0, 90, 0]) idler_assy(idler_bearing);

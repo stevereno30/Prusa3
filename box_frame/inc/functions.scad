@@ -138,7 +138,7 @@ module plate_screw(long=0) {
 }
 
 //radius of the idler assembly (to surface that touches belt, ignoring guide walls)
-function idler_assy_r_inner(idler_bearing) = (idler_bearing[0] / 2) + (6 * single_wall_width + 0.2) * idler_bearing[3];
+function idler_assy_r_inner(idler_bearing) = (idler_bearing[0] / 2) + (4 * single_wall_width + 0.2) * idler_bearing[3];
 //outer radius of the idler assembly (to smooth side of belt) 
 function idler_assy_r_outer(idler_bearing) = idler_assy_r_inner(idler_bearing) + belt_thickness + 1;
 
