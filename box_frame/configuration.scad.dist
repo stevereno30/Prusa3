@@ -71,7 +71,7 @@ bushing_carriage = bushing_xy;
 // Select idler bearing size **************************************************
 // bearing_* are in inc/conf_bushing.scad
 
-idler_bearing = bearing_623;
+idler_bearing = bearing_608;
 
 // Select carriage lenght ******************************************************
 // 30 for single carriage extruder (two holes with centers 30mm apart)
@@ -93,7 +93,7 @@ carriage_l_base = 50;
 use_fillets = 1;
 
 // set to 0 for single plate (affects z axis and screws that attach RP parts to frame)
-i_am_box = 0;
+i_am_box = 1;
 
 // if you do your own plate and can move bottom Z screws 5mm up set this to 0 to
 // get stronger motor mount. Only for i_am_box = 0
@@ -105,8 +105,12 @@ i_want_to_use_single_plate_dxf_and_make_my_z_weaker = 1;
 // Affects y-axis-corner (both box and single plate)
 // and y-axis-bracket (box only)
 
-//Use 5.4 for M10 or 4.4 for M8
-y_threaded_rod_long_r = 5.4;
+//Use 5.4 for M10 or 4.4 for M8. 4.2 is for 3/8" threaded rod
+y_threaded_rod_long_r = 4.2;
+
+
+//Enter the METRIC rod diameter
+z_threaded_rod_diameter = 6;
 
 
 // Thickness of the boards that make the box frame.
